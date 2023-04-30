@@ -1,8 +1,6 @@
 <img src="public/readme-logo.svg" alt="isolated" width="350" style="border-radius: 5px"/>
 
-[DEMO](https://wundr-guide.vercel.app/)
-
-</br>
+[Preview Site](https://wundr-guide.vercel.app/)
 
 ### Road Map
 

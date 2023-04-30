@@ -7,17 +7,17 @@ import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Precedent - Building blocks for your Next.js project",
+  title: "Wundr Guide - Discover the World.",
   description:
-    "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
+    "Unlock a World of Inspiration with Handcrafted Destination Guides by Your Favorite Creators.",
   twitter: {
     card: "summary_large_image",
-    title: "Precedent - Building blocks for your Next.js project",
+    title: "Wundr Guide - Discover the World.",
     description:
-      "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
-    creator: "@steventey",
+      "Unlock a World of Inspiration with Handcrafted Destination Guides by Your Favorite Creators.",
+    creator: "@abdulwahabone",
   },
-  metadataBase: new URL("https://precedent.dev"),
+  metadataBase: new URL("https://wundr-guide.vercel.app/"),
   themeColor: "#FFF",
 };
 
@@ -37,7 +37,6 @@ export default async function RootLayout({
         <main className="flex min-h-screen w-full flex-col items-center justify-center py-32">
           {children}
         </main>
-        <Footer />
         <Analytics />
       </body>
     </html>

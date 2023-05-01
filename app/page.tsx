@@ -2,7 +2,7 @@ import Balancer from "react-wrap-balancer";
 import { getAllGuides } from "./api/guides";
 
 export default async function Home() {
-  const guides = await getAllGuides();
+  // const guides = await getAllGuides();
 
   return (
     <div className="z-10 w-full max-w-xl px-5 xl:px-0">
@@ -21,7 +21,7 @@ export default async function Home() {
           Your Favorite Creators
         </Balancer>
       </p>
-      <p>{guides.toString()}</p>
+      {/* <p>{guides.toString()}</p> */}
     </div>
   );
 }

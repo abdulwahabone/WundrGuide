@@ -1,3 +1,8 @@
+enum LocationType {
+  RESTURANT
+  ADMIN
+}
+
 datasource db {
   provider     = "postgresql"
   url          = env("DATABASE_URL")
@@ -38,13 +43,33 @@ model Session {
   @@index([userId])
 }
 
+model GuideMedia {
+  url              String          @unique
+  GuideLocations   GuideLocations? @relation(fields: [guideLocationsId], references: [id])
+  guideLocationsId Int?
+
+  @@index([guideLocationsId])
+}
+
+model GuideLocations {
+  id        Int          @id @default(autoincrement())
+  placeId   String
+  placeIcon String
+  Guides    Guides?      @relation(fields: [guidesId], references: [id])
+  guidesId  String?
+  media     GuideMedia[]
+
+  @@index([guidesId])
+}
+
 model Guides {
-  id          Int      @id @default(autoincrement())
+  id          String           @id @default(cuid())
   title       String
-  dateCreated DateTime @default(now()) @db.Timestamptz(6)
+  dateCreated DateTime         @default(now()) @db.Timestamptz(6)
   cover       String
-  User        User?    @relation(fields: [userEmail], references: [email])
+  User        User?            @relation(fields: [userEmail], references: [email])
   userEmail   String?
+  locations   GuideLocations[]
 
   @@index([userEmail])
 }

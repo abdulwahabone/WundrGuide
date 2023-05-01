@@ -1,24 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import useScroll from "@/lib/hooks/use-scroll";
 import { useSignInModal } from "./sign-in-modal";
 import UserDropdown from "./user-dropdown";
 import { Session } from "next-auth";
-import axios from "axios";
 
 export default function NavBar({ session }: { session: Session | null }) {
   const { SignInModal, setShowSignInModal } = useSignInModal();
   const scrolled = useScroll(50);
 
-  const create = async (title: String, cover: String, userEmail: String) => {
-    const { data } = await axios.post("/api/guide/", {
-      title,
-      cover,
-      userEmail,
-    });
-  };
+  const pathName = usePathname();
+
+  const showCreateButton = pathName !== "/create";
 
   return (
     <>
@@ -43,18 +39,13 @@ export default function NavBar({ session }: { session: Session | null }) {
           <div>
             {session ? (
               <div className="flex justify-center align-middle">
-                <button
-                  className="mr-5 rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
-                  onClick={() =>
-                    create(
-                      "new Guide",
-                      "just a cover",
-                      "abdulwahabone@gmail.com",
-                    )
-                  }
-                >
-                  Create Destination Guide
-                </button>
+                {showCreateButton && (
+                  <Link href="/create">
+                    <button className="mr-5 rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black">
+                      Create Destination Guide
+                    </button>
+                  </Link>
+                )}
                 <UserDropdown session={session} />
               </div>
             ) : (

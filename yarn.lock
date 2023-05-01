@@ -530,6 +530,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@symbiotejs/symbiote@^1.11.6":
+  version "1.11.7"
+  resolved "https://registry.yarnpkg.com/@symbiotejs/symbiote/-/symbiote-1.11.7.tgz#78a9f415d17ec3b3546de1706e464d4d72e55510"
+  integrity sha512-fUOJwzuldeApJ533YeTdrfnpp4nsA+ss1eiNBodX7RHf4LnhPB2Z9HP4fF3m2YhKYnxK0whjXaKA+wrxTRP5qA==
+
 "@tailwindcss/forms@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.3.tgz#e4d7989686cbcaf416c53f1523df5225332a86e7"
@@ -671,6 +676,22 @@
   dependencies:
     "@typescript-eslint/types" "5.59.1"
     eslint-visitor-keys "^3.3.0"
+
+"@uploadcare/blocks@^0.21.6":
+  version "0.21.6"
+  resolved "https://registry.yarnpkg.com/@uploadcare/blocks/-/blocks-0.21.6.tgz#cbeeba1d7c01dbeabe0ca1e7dd589e7c9b30bf98"
+  integrity sha512-hqNuAhoIkxuioLJcerKFmbJANlaRNcNVivgU8LUw+d5PtTcZ5rKNpX7Qk5JSPNKnvsAQHa5JE5Pea/hPWIfinA==
+  dependencies:
+    "@symbiotejs/symbiote" "^1.11.6"
+    "@uploadcare/upload-client" "^6.4.1"
+
+"@uploadcare/upload-client@^6.4.1":
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/@uploadcare/upload-client/-/upload-client-6.6.0.tgz#af4fa6827559de8b6fb981a081a57181ec8516f4"
+  integrity sha512-1Ng5AQOSue5Lj37o9Ad4VCpbN02B0TzcTibDpHRFfYMbo4z5tIkDxFKtCmDcATtE8VWajuya6Eu1Ot4OUkTB5Q==
+  dependencies:
+    form-data "^4.0.0"
+    ws "^8.2.3"
 
 "@vercel/analytics@^0.1.6":
   version "0.1.11"
@@ -3750,6 +3771,11 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
+
+ws@^8.2.3:
+  version "8.13.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.13.0.tgz#9a9fb92f93cf41512a0735c8f4dd09b8a1211cd0"
+  integrity sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==
 
 y18n@^5.0.5:
   version "5.0.8"

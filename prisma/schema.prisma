@@ -67,6 +67,8 @@ model Guides {
   title       String
   dateCreated DateTime         @default(now()) @db.Timestamptz(6)
   cover       String
+  duration    Int
+  price       Int
   User        User?            @relation(fields: [userEmail], references: [email])
   userEmail   String?
   locations   GuideLocations[]

@@ -26,7 +26,7 @@ export default function Button({
           ? "border border-blue-600 bg-transparent text-blue-600 hover:text-white"
           : "bg-blue-600 text-white"
       } ${
-        disabled ? "bg-blue-300 text-white hover:bg-blue-300" : ""
+        disabled ? "!bg-blue-300 !text-white hover:!bg-blue-300" : ""
       } ${customStyles}
       ${success ? "bg-emerald-400 hover:bg-emerald-300" : ""}
       `}

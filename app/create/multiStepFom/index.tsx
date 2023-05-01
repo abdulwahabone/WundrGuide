@@ -2,25 +2,27 @@
 
 import Card from "@/components/home/card";
 import Button from "@/components/shared/button";
-import { useState } from "react";
 import AddLocation from "./addLocation";
 import BasicDetails from "./basicDetails";
+import useForm from "./useForm";
 
 export default function MultiStepFom() {
-  const [formStep, setFormStep] = useState(1);
-
-  const isFirstStep = formStep === 1;
-
-  const handleNext = () => setFormStep((step) => step + 1);
-
-  const handleBack = () => setFormStep((step) => step - 1);
-
-  const handleFinish = () => {};
+  const {
+    isFirstStep,
+    handleBack,
+    handleFinish,
+    handleNext,
+    details,
+    setDetailsFeild,
+    disableNext,
+  } = useForm();
 
   return (
     <div className="flex flex-col">
       <Card>
-        {isFirstStep && <BasicDetails />}
+        {isFirstStep && (
+          <BasicDetails details={details} onChange={setDetailsFeild} />
+        )}
         {!isFirstStep && <AddLocation />}
       </Card>
       <div className="mt-4 grid grid-cols-3 gap-6">
@@ -36,7 +38,12 @@ export default function MultiStepFom() {
           </>
         )}
 
-        <Button onClick={handleNext} customStyles="col-start-3" label="Next" />
+        <Button
+          onClick={handleNext}
+          disabled={disableNext}
+          customStyles="col-start-3"
+          label="Next"
+        />
       </div>
     </div>
   );

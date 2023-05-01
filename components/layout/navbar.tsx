@@ -6,10 +6,19 @@ import useScroll from "@/lib/hooks/use-scroll";
 import { useSignInModal } from "./sign-in-modal";
 import UserDropdown from "./user-dropdown";
 import { Session } from "next-auth";
+import axios from "axios";
 
 export default function NavBar({ session }: { session: Session | null }) {
   const { SignInModal, setShowSignInModal } = useSignInModal();
   const scrolled = useScroll(50);
+
+  const create = async (title: String, cover: String, userEmail: String) => {
+    const { data } = await axios.post("/api/guide/", {
+      title,
+      cover,
+      userEmail,
+    });
+  };
 
   return (
     <>
@@ -33,7 +42,21 @@ export default function NavBar({ session }: { session: Session | null }) {
           </Link>
           <div>
             {session ? (
-              <UserDropdown session={session} />
+              <div className="flex justify-center align-middle">
+                <button
+                  className="mr-5 rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
+                  onClick={() =>
+                    create(
+                      "new Guide",
+                      "just a cover",
+                      "abdulwahabone@gmail.com",
+                    )
+                  }
+                >
+                  Create Destination Guide
+                </button>
+                <UserDropdown session={session} />
+              </div>
             ) : (
               <button
                 className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"

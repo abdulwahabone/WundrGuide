@@ -1,4 +1,7 @@
+"use client";
+
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const postGuide = async (guide: any) => {
@@ -49,6 +52,8 @@ const emptyLocation = {
 const isStringEmpty = (str: string) => !str || str === "";
 
 export default function useForm() {
+  const router = useRouter();
+
   const [details, setDetails] = useState<Details>({
     title: "",
     location: "",
@@ -130,7 +135,7 @@ export default function useForm() {
 
     await postGuide(payload);
 
-    // here
+    router.push("/");
   };
 
   const disableNextButton = () => {

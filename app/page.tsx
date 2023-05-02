@@ -1,6 +1,17 @@
-import { getGuide } from "@/pages/axios/getGuides";
+import axios from "axios";
 import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
+
+const getGuide = async () => {
+  try {
+    const { data } = await axios.get(
+      `https://wundr-guide.vercel.app/api/guide`,
+    );
+    return data;
+  } catch (err) {
+    console.log({ err });
+  }
+};
 
 export default async function Page() {
   const guides = await getGuide();

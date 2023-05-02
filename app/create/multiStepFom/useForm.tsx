@@ -1,5 +1,17 @@
-import { postGuide } from "@/pages/axios/postGuide";
+import axios from "axios";
 import { useEffect, useState } from "react";
+
+const postGuide = async (guide: any) => {
+  try {
+    const { data } = await axios.post(`/api/guide`, {
+      ...guide,
+    });
+
+    return data;
+  } catch (err) {
+    console.log({ err });
+  }
+};
 
 export const locationTypes = [
   "Hotel",
@@ -118,7 +130,7 @@ export default function useForm() {
 
     await postGuide(payload);
 
-   // here
+    // here
   };
 
   const disableNextButton = () => {

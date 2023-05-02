@@ -8,8 +8,8 @@
 - [x] Add Google Auth
 - [x] Add Logo & Meta details
 - [ ] Create landing page
-- [ ] Add Create Destination Guide page
-- [ ] Add Create Destination Guide page
+- [x] Add Create Destination Guide page
+- [ ] Add View Destination Guide page
 
 ### Frameworks
 

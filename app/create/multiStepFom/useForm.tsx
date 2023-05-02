@@ -4,7 +4,7 @@ export interface Details {
   title: string;
   location: string;
   duration: number; // number of days
-  cover: string;
+  media: Array<any>;
   price: number;
 }
 
@@ -15,7 +15,7 @@ export default function useForm() {
     title: "",
     location: "",
     duration: 1,
-    cover: "",
+    media: [],
     price: 1,
   });
 
@@ -37,9 +37,9 @@ export default function useForm() {
 
   const disableNextButton = () => {
     if (isFirstStep) {
-      const { title, cover, location } = details;
+      const { title, media, location } = details;
       return (
-        isStringEmpty(title) || isStringEmpty(cover) || isStringEmpty(location)
+        isStringEmpty(title) || media.length === 0 || isStringEmpty(location)
       );
     }
   };

@@ -1,8 +1,9 @@
+import { getGuide } from "@/pages/axios/getGuides";
+import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
-import { getAllGuides } from "./api/guides";
 
-export default async function Home() {
-  // const guides = await getAllGuides();
+export default async function Page() {
+  const guides = await getGuide();
 
   return (
     <div className="z-10 w-full max-w-xl px-5 xl:px-0">
@@ -21,7 +22,9 @@ export default async function Home() {
           Your Favorite Creators
         </Balancer>
       </p>
-      {/* <p>{guides.toString()}</p> */}
+      <Suspense fallback="...">
+        <pre>{JSON.stringify(guides, null, 2)}</pre>
+      </Suspense>
     </div>
   );
 }

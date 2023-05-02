@@ -52,7 +52,7 @@ model GuideLocations {
 }
 
 model Guides {
-  id          String           @id @default(cuid())
+  id          String           @unique
   title       String
   dateCreated DateTime         @default(now()) @db.Timestamptz(6)
   cover       String

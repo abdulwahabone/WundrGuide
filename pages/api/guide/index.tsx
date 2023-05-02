@@ -10,15 +10,15 @@ export default async function handle(
   switch (method) {
     case "POST":
       const { title, cover, userEmail } = req.body;
-      const createGuide = await prisma.guides.create({
-        data: {
-          title,
-          cover,
-          userEmail,
-        },
-      });
+      // const createGuide = await prisma.guides.create({
+      //   data: {
+      //     title,
+      //     cover,
+      //     userEmail,
+      //   },
+      // });
 
-      res.status(201).json(createGuide);
+      res.status(201).json({});
       break;
     default:
       res.status(405).end(`Method ${method} Not Allowed`);

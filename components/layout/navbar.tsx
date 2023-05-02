@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import Link from "next/link";
 import useScroll from "@/lib/hooks/use-scroll";
 import { useSignInModal } from "./sign-in-modal";
@@ -15,6 +15,9 @@ export default function NavBar({ session }: { session: Session | null }) {
   const pathName = usePathname();
 
   const showCreateButton = pathName !== "/create";
+
+  const isHome = pathName == "/";
+  if (!session && !isHome) redirect("/");
 
   return (
     <>

@@ -14,9 +14,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://wundr-guide.vercel.app/",
       lastModified: new Date(),
     },
-    ...users.map((user) => ({
-      url: `https://wundr-guide.vercel.app/${user.id}`,
-      lastModified: new Date(),
-    })),
   ];
 }

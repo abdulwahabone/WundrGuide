@@ -51,13 +51,6 @@ const cityData = [
       "https://ucarecdn.com/0572f205-73d9-4028-9ed0-2c7cb531259c/pexelscottonbrostudio51989562160x409625fps.mp4",
   },
   {
-    id: "0d27e9c9-0d24-472c-a1b5-asdfasasdvasdvdfasdfasd",
-    title: "Mumbai: Exploring the Vibrant Heart of India",
-    city: "Mumbai, India",
-    cover:
-      "https://ucarecdn.com/af6feab8-5c04-44c1-8563-655146836c3e/pexelscottonbrostudio51382142160x409625fps.mp4",
-  },
-  {
     id: "0d27e9c9-0d24-47sdfsd2c-a1b5-asdsadvasdvfasdfasdf",
     title: "Moscow: A Glimpse into Russia's Imperial Past and Modern Present",
     city: "Moscow, Russia",
@@ -121,7 +114,7 @@ const locationData = [
 const prisma = new PrismaClient();
 
 async function main() {
-  for (let i = 0; i <= 9; i++) {
+  for (let i = 0; i <= 8; i++) {
     const { id, title, cover } = cityData[i];
     await prisma.guides.create({
       data: {

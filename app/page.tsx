@@ -7,6 +7,7 @@ const getGuide = async () => {
     const { data } = await axios.get(
       `https://wundr-guide.vercel.app/api/guide`,
     );
+    // const { data } = await axios.get(`http://localhost:3000/api/guide`);
     return data;
   } catch (err) {
     console.log({ err });

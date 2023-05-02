@@ -111,12 +111,10 @@ const locationData = [
   },
 ];
 
-const prisma = new PrismaClient();
-
 async function main() {
   for (let i = 0; i <= 8; i++) {
     const { id, title, cover } = cityData[i];
-    await prisma.guides.create({
+    await PrismaClient.guides.create({
       data: {
         id,
         title,
@@ -126,7 +124,7 @@ async function main() {
       },
     });
 
-    await prisma.guideLocations.createMany({
+    await PrismaClient.guideLocations.createMany({
       data: locationData.map((loc: any) => {
         return {
           ...loc,
@@ -141,10 +139,10 @@ async function main() {
 
 main()
   .then(async () => {
-    await prisma.$disconnect();
+    await PrismaClient.$disconnect();
   })
   .catch(async (e) => {
     console.error(e);
-    await prisma.$disconnect();
+    await PrismaClient.$disconnect();
     process.exit(1);
   });

@@ -63,6 +63,7 @@ export default function BasicDetails({
             onChange={(e) => onChange("duration", e.target.value)}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
             placeholder="5"
+            min="1"
             required
           />
         </div>

@@ -1,3 +1,4 @@
+import { postGuide } from "@/pages/axios/postGuide";
 import { useEffect, useState } from "react";
 
 export const locationTypes = [
@@ -89,7 +90,36 @@ export default function useForm() {
 
   const handleBack = () => setFormStep((step) => step - 1);
 
-  const handleFinish = () => {};
+  const handleFinish = async () => {
+    const { title, duration, media, price } = details;
+    const urls = media.map(({ cdnUrl }: { cdnUrl: string }) => cdnUrl);
+
+    const filterLocations = guideLocations.filter(
+      (loc) => !isStringEmpty(loc.title),
+    );
+    const locations = filterLocations.map((loc) => {
+      const { link, description, type } = loc;
+      return {
+        link,
+        title: loc.title,
+        description,
+        type,
+        media: urls,
+      };
+    });
+
+    const payload = {
+      title,
+      duration,
+      cover: media[0]?.cdnUrl,
+      price,
+      locations,
+    };
+
+    await postGuide(payload);
+
+   // here
+  };
 
   const disableNextButton = () => {
     if (isFirstStep) {

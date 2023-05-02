@@ -38,23 +38,15 @@ model Session {
   @@index([userId])
 }
 
-model GuideMedia {
-  url              String          @unique
-  GuideLocations   GuideLocations? @relation(fields: [guideLocationsId], references: [id])
-  guideLocationsId Int?
-
-  @@index([guideLocationsId])
-}
-
 model GuideLocations {
-  id          Int          @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   link        String
   title       String
   description String
   type        String
-  Guides      Guides?      @relation(fields: [guidesId], references: [id])
+  guides      Guides?  @relation(fields: [guidesId], references: [id])
   guidesId    String?
-  media       GuideMedia[]
+  media       String[]
 
   @@index([guidesId])
 }
@@ -66,11 +58,7 @@ model Guides {
   cover       String
   duration    Int
   price       Int
-  User        User?            @relation(fields: [userEmail], references: [email])
-  userEmail   String?
   locations   GuideLocations[]
-
-  @@index([userEmail])
 }
 
 model User {
@@ -81,7 +69,6 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  guides        Guides[]
 }
 
 model VerificationToken {

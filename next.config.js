@@ -4,6 +4,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  api: {
+    bodyParser: false,
+  },
   swcMinify: true,
   images: {
     domains: ["lh3.googleusercontent.com", "vercel.com"],

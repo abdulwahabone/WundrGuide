@@ -8,12 +8,10 @@ export default function AddLocation({
   location,
   onChange,
   formStep,
-  guideLocations,
 }: {
   location: GuideLocations;
   onChange: Function;
   formStep: number;
-  guideLocations: Array<GuideLocations>;
 }) {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
@@ -50,7 +48,6 @@ export default function AddLocation({
               id="description"
               value={location?.description}
               onChange={(e) => onChange("description", e.target.value)}
-              maxLength={100}
               className="block min-h-[160px] w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
               placeholder="Escape the stresses of everyday life and visit this amazing place, a breathtaking destination that offers something for everyone. With stunning natural landscapes, rich history, and vibrant culture, you're sure to be fascinated. Outdoor enthusiasts will love the variety of activities available, while those seeking relaxation can take in the serene atmosphere and stunning views. Don't miss out on this incredible destination – pack your bags and get ready for an unforgettable adventure.."
               required

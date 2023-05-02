@@ -9,16 +9,27 @@ export default async function handle(
 
   switch (method) {
     case "POST":
-      const { title, cover, userEmail } = req.body;
-      // const createGuide = await prisma.guides.create({
-      //   data: {
-      //     title,
-      //     cover,
-      //     userEmail,
-      //   },
-      // });
+      const { title, duration, cover, price, locations } = req.body;
 
-      res.status(201).json({});
+      const result = await prisma.guides.create({
+        data: {
+          title,
+          duration,
+          cover,
+          price,
+        },
+      });
+
+      await prisma.guideLocations.createMany({
+        data: locations.map((loc: any) => {
+          return {
+            ...loc,
+            guidesId: result.id,
+          };
+        }),
+      });
+
+      res.status(200).json(result);
       break;
     default:
       res.status(405).end(`Method ${method} Not Allowed`);

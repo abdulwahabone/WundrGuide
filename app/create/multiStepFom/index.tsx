@@ -40,7 +40,6 @@ export default function MultiStepFom() {
           <AddLocation
             location={guideLocations[locationIndex]}
             formStep={formStep}
-            guideLocations={guideLocations}
             onChange={(field: string, val: any) =>
               handleSetGuideLocations(locationIndex, field, val)
             }

@@ -1,4 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+export const locationTypes = [
+  "Hotel",
+  "Bar",
+  "Beach",
+  "Hill",
+  "Bicycle Track",
+  "Resturant",
+];
 
 export interface Details {
   title: string;
@@ -7,6 +16,22 @@ export interface Details {
   media: Array<any>;
   price: number;
 }
+
+export interface GuideLocations {
+  title: string;
+  description: string;
+  link: string;
+  type: string;
+  media: Array<any>;
+}
+
+const emptyLocation = {
+  title: "",
+  description: "",
+  link: "",
+  type: locationTypes[0],
+  media: [],
+};
 
 const isStringEmpty = (str: string) => !str || str === "";
 
@@ -19,8 +44,33 @@ export default function useForm() {
     price: 1,
   });
 
+  const [guideLocations, setGuideLocations] = useState<Array<GuideLocations>>(
+    [],
+  );
+
+  useEffect(() => {
+    console.log({ guideLocations });
+  }, [guideLocations]);
+
+  const handleSetGuideLocations = (
+    locationIndex: number,
+    field: string,
+    value: any,
+  ) => {
+    setGuideLocations((locations) => {
+      const locationObject = locations[formStep - 2];
+      const updatedLocation = { ...locationObject, [field]: value };
+
+      console.log({ locationObject, updatedLocation, field, value });
+
+      return locations.map((loc, index) => {
+        if (index === locationIndex) return updatedLocation;
+        return loc;
+      });
+    });
+  };
+
   const setDetailsFeild = (field: string, value: any) => {
-    console.log({ field, value });
     setDetails((details) => {
       return { ...details, [field]: value };
     });
@@ -29,7 +79,13 @@ export default function useForm() {
   const [formStep, setFormStep] = useState(1);
   const isFirstStep = formStep === 1;
 
-  const handleNext = () => setFormStep((step) => step + 1);
+  const handleNext = () => {
+    if (guideLocations.length < formStep)
+      setGuideLocations((loc) => {
+        return [...loc, emptyLocation];
+      });
+    setFormStep((step) => step + 1);
+  };
 
   const handleBack = () => setFormStep((step) => step - 1);
 
@@ -42,6 +98,36 @@ export default function useForm() {
         isStringEmpty(title) || media.length === 0 || isStringEmpty(location)
       );
     }
+
+    const currentLocationObjectInView = guideLocations[formStep - 2];
+    const { title, description, link, media } = currentLocationObjectInView;
+
+    return (
+      isStringEmpty(title) ||
+      media.length === 0 ||
+      isStringEmpty(description) ||
+      isStringEmpty(link)
+    );
+  };
+
+  const hideFinish = () => {
+    const noLocations = guideLocations.length === 0;
+
+    const hasMoreThanOneLocation = guideLocations.length > 1;
+    if (hasMoreThanOneLocation || noLocations) return false;
+
+    const { title, description, link, media } = guideLocations[0];
+    return (
+      isStringEmpty(title) ||
+      media.length === 0 ||
+      isStringEmpty(description) ||
+      isStringEmpty(link)
+    );
+  };
+
+  const getNextLabel = () => {
+    if (guideLocations.length < formStep) return "Add location";
+    return "Next";
   };
 
   return {
@@ -52,6 +138,10 @@ export default function useForm() {
     handleFinish,
     details,
     setDetailsFeild,
-    disableNext: disableNextButton()
+    disableNext: disableNextButton(),
+    guideLocations,
+    handleSetGuideLocations,
+    nextLabel: getNextLabel(),
+    hideFinish: hideFinish(),
   };
 }

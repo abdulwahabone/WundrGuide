@@ -26,10 +26,12 @@ export default function MediaUploader({
   onlyVideo,
   onChange,
   values,
+  formStep,
 }: {
   onlyVideo?: boolean;
   onChange: Function;
   values: Array<any>;
+  formStep: number;
 }) {
   const dataOutputRef = useRef<any>();
 
@@ -55,7 +57,7 @@ export default function MediaUploader({
         handleUploaderEvent as EventListenerOrEventListenerObject,
       );
     };
-  }, [handleUploaderEvent]);
+  }, [handleUploaderEvent, formStep]);
 
   useEffect(() => {
     dataOutputRef.current.uploadCollection.clearAll();
@@ -74,12 +76,12 @@ export default function MediaUploader({
       });
     });
     setTimeout(() => onChange(values), 100);
-  }, []);
+  }, [formStep]);
 
   const mediaStyles = onlyVideo ? UC_VIDEO_CSS : UC_MEDIA_CSS;
 
   return (
-    <div className="flex flex-col gap-4">
+    <div key={`${formStep}`} className="flex flex-col gap-4">
       <lr-file-uploader-inline
         ctx-name="Wundr"
         activity="upload-list"

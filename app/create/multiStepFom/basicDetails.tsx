@@ -74,16 +74,21 @@ export default function BasicDetails({
           >
             Price
           </label>
-          <input
-            type="number"
-            id="price"
-            value={details.price}
-            onChange={(e) => onChange("price", e.target.value)}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
-            placeholder="1"
-            required
-            min="1"
-          />
+          <div className="flex">
+            <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-100 px-3 text-sm text-gray-600">
+              $
+            </span>
+            <input
+              type="number"
+              id="price"
+              value={details.price}
+              onChange={(e) => onChange("price", e.target.value)}
+              className="block w-full min-w-0 flex-1 rounded-none rounded-r-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  "
+              placeholder="1"
+              required
+              min="1"
+            />
+          </div>
         </div>
 
         <p className="mb-0 block text-sm font-medium text-gray-900">
@@ -91,10 +96,12 @@ export default function BasicDetails({
         </p>
       </div>
 
-      <div className="px-3">
+      <div className="min-h-[270px] px-3">
         <MediaUploader
+          formStep={1}
           values={details.media}
           onlyVideo
+          key="1"
           onChange={(files: Array<any>) => {
             // const urls = files.map(({ cdnUrl }: { cdnUrl: string }) => cdnUrl);
             // onChange("cover", urls[0]);

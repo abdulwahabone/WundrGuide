@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+const prismaSeedClient = new PrismaClient()
 
 const cityData = [
   {
@@ -114,7 +115,7 @@ const locationData = [
 async function main() {
   for (let i = 0; i <= 8; i++) {
     const { id, title, cover } = cityData[i];
-    await PrismaClient.guides.create({
+    await prismaSeedClient.guides.create({
       data: {
         id,
         title,
@@ -124,7 +125,7 @@ async function main() {
       },
     });
 
-    await PrismaClient.guideLocations.createMany({
+    await prismaSeedClient.guideLocations.createMany({
       data: locationData.map((loc: any) => {
         return {
           ...loc,
@@ -139,10 +140,10 @@ async function main() {
 
 main()
   .then(async () => {
-    await PrismaClient.$disconnect();
+    await prismaSeedClient.$disconnect();
   })
   .catch(async (e) => {
     console.error(e);
-    await PrismaClient.$disconnect();
+    await prismaSeedClient.$disconnect();
     process.exit(1);
   });

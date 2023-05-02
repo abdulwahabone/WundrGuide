@@ -3,7 +3,7 @@
 import Balancer from "react-wrap-balancer";
 import MultiStepFom from "./multiStepFom";
 
-export default async function Page() {
+export default function Page() {
   return (
     <div className="w-full max-w-xl">
       <h1

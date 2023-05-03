@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
 
 export default function HorizontalVideoPlayer({ list }: { list?: Array<any> }) {
   return (

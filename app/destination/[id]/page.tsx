@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: any }) {
   const dateLabel = formatDate(guide?.dateCreated);
 
   return (
-    <div className="w-full max-w-3xl relative">
+    <div className="relative w-full max-w-3xl">
       <div
         className="mx-auto animate-fade-up text-center text-sm font-thin text-black opacity-0"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}

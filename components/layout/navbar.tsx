@@ -7,20 +7,39 @@ import useScroll from "@/lib/hooks/use-scroll";
 import { useSignInModal } from "./sign-in-modal";
 import UserDropdown from "./user-dropdown";
 import { Session } from "next-auth";
+import { useBuyNowModal } from "./buy-now-modal";
+import { useEffect, useState } from "react";
 
 export default function NavBar({ session }: { session: Session | null }) {
+  const [buyModalShown, setBuyModalShown] = useState(false);
+
   const { SignInModal, setShowSignInModal } = useSignInModal();
+  const { BuyNowModal, setShowModal } = useBuyNowModal();
+
   const scrolled = useScroll(50);
+
+  const scrolledHalfway = useScroll(800);
 
   const pathName = usePathname();
 
   const showCreateButton = pathName !== "/create";
+
+  const destinationPath = pathName?.includes("destination");
+
+  useEffect(() => {
+    console.log({ pathName, destinationPath, scrolledHalfway });
+    if (scrolledHalfway && !buyModalShown && destinationPath) {
+      setShowModal(true);
+      setBuyModalShown(true);
+    }
+  }, [scrolledHalfway]);
 
   const isCreate = pathName === "/create";
   if (!session && isCreate) redirect("/");
 
   return (
     <>
+      <BuyNowModal />
       <SignInModal />
       <div
         className={`fixed top-0 w-full ${

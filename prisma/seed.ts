@@ -1,5 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
-const prismaSeedClient = new PrismaClient()
+const prismaSeedClient = new PrismaClient();
 
 const cityData = [
   {
@@ -71,7 +71,7 @@ const locationData = [
   {
     link: "https://www.google.com/search?q=best+bar+in+tokyo&oq=best+bar+in+&aqs=chrome.0.0i512l6j69i57j0i512l3.4604j0j7&sourceid=chrome&ie=UTF-8#rlimm=6114541142626704952",
     title:
-      "Raise a Glass at the Best Bar in the City: A Sophisticated Oasis for Cocktail Connoisseurs",
+      "Unveiling the Best Hotel: A Luxurious Haven for Discerning Travelers",
     description:
       "Nestled in the heart of a bustling city, the best hotel in town offers a luxurious haven for discerning travelers. From the moment guests step through its grand entrance, they are transported into a world of elegance and sophistication. The hotel boasts exquisite architecture and stunning design, with every detail carefully crafted to create an unforgettable experience. From the opulent guest rooms and suites to the top-notch amenities and unparalleled service, every aspect of the hotel is designed to exceed expectations. With its prime location, guests have easy access to the city's best attractions, making it the perfect base for exploring all that this vibrant city has to offer. Whether you're traveling for business or pleasure, the best hotel in this city promises an exceptional stay that will leave you feeling pampered and rejuvenated.",
     type: "Hotel",
@@ -86,7 +86,7 @@ const locationData = [
   {
     link: "https://www.hilton.com/en/hotels/nyccici-conrad-new-york-downtown/",
     title:
-      "Unveiling the Best Hotel: A Luxurious Haven for Discerning Travelers",
+      "Raise a Glass at the Best Bar in the City: A Sophisticated Oasis for Cocktail Connoisseurs",
     description:
       "Looking for the perfect spot to unwind and indulge in a delicious cocktail? Look no further than the best bar in the city! Located in the heart of downtown, this sophisticated oasis is a haven for cocktail connoisseurs and those who appreciate a finely crafted drink. Step inside and you'll be transported to a world of elegance and refinement, with luxurious furnishings and a cozy ambiance that invites you to sit back, relax, and savor every sip. The bar's expert mixologists use only the finest ingredients to create a wide variety of classic and inventive cocktails, each one perfectly balanced and bursting with flavor. Whether you prefer a refreshing gin and tonic or a bold and complex whiskey sour, you're sure to find your new favorite drink at the best bar in the city. So why wait? Grab a seat, raise a glass, and toast to the good life!",
     type: "Bar",

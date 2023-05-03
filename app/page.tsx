@@ -1,4 +1,5 @@
 import MediaGrid from "@/components/mediaGrid";
+import { Underline } from "@/components/shared/icons";
 import VerticalVideoPlayer from "@/components/verticalVideoPlayer";
 import axios from "axios";
 import { Key, Suspense } from "react";
@@ -34,7 +35,12 @@ export default async function Page() {
         >
           <Balancer>
             Unlock a World of Inspiration with Handcrafted Destination Guides by
-            Your Favorite Creators
+            <span className="relative ml-2 inline-block h-[50px]">
+              Your Favorite Creators
+              <span className="w-full h-full">
+                <Underline />
+              </span>
+            </span>
           </Balancer>
         </p>
       </div>

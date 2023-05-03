@@ -27,7 +27,6 @@ export default function NavBar({ session }: { session: Session | null }) {
   const destinationPath = pathName?.includes("destination");
 
   useEffect(() => {
-    console.log({ pathName, destinationPath, scrolledHalfway });
     if (scrolledHalfway && !buyModalShown && destinationPath) {
       setShowModal(true);
       setBuyModalShown(true);

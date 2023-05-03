@@ -40,12 +40,25 @@ export default async function Page() {
       </div>
       <Suspense fallback="...">
         <MediaGrid>
-          {guides.map((g: { id: string, cover: string }) => {
-            const { cover, id } = g;
-            return <VerticalVideoPlayer url={cover} key={id} />;
-          })}
+          {guides.map(
+            (g: {
+              id: string;
+              cover: string;
+              title: string;
+              duration: number;
+            }) => {
+              const { cover, id, title, duration } = g;
+              return (
+                <VerticalVideoPlayer
+                  duration={duration}
+                  title={title}
+                  url={cover}
+                  key={id}
+                />
+              );
+            },
+          )}
         </MediaGrid>
-        {/* <pre>{JSON.stringify(guides, null, 2)}</pre> */}
       </Suspense>
     </div>
   );

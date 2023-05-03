@@ -10,16 +10,16 @@ export default function Underline() {
       className="mt-[-90px]"
     >
       <g
-        stroke-width="18"
+        strokeWidth="18"
         stroke="rgb(41 37 36)"
         fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         transform="rotate(316, 400, 400)"
       >
         <path
           d="M131 131Q504 462 669 669 "
-          marker-end="url(#SvgjsMarker2889)"
+          markerEnd="url(#SvgjsMarker2889)"
         ></path>
       </g>
       <defs>

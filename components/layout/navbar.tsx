@@ -16,8 +16,8 @@ export default function NavBar({ session }: { session: Session | null }) {
 
   const showCreateButton = pathName !== "/create";
 
-  const isHome = pathName == "/";
-  if (!session && !isHome) redirect("/");
+  const isCreate = pathName === "/create";
+  if (!session && isCreate) redirect("/");
 
   return (
     <>

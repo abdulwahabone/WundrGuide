@@ -1,24 +1,24 @@
 import MediaGrid from "@/components/mediaGrid";
 import { Underline } from "@/components/shared/icons";
 import VerticalVideoPlayer from "@/components/verticalVideoPlayer";
-import axios from "axios";
-import { Key, Suspense } from "react";
+import prisma from "@/lib/prisma";
+import Link from "next/link";
+import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
 
-const getGuide = async () => {
+const getGuides = async () => {
   try {
-    const { data } = await axios.get(
-      `https://wundr-guide.vercel.app/api/guide`,
-    );
-    // const { data } = await axios.get(`http://localhost:3000/api/guide`);
-    return data;
+    const guides = await prisma.guides.findMany({
+      include: { locations: true },
+    });
+    return guides;
   } catch (err) {
     console.log({ err });
   }
 };
 
 export default async function Page() {
-  const guides = await getGuide();
+  const guides = await getGuides();
 
   return (
     <div className="z-10 max-w-[1024px]">
@@ -37,7 +37,7 @@ export default async function Page() {
             Unlock a World of Inspiration with Handcrafted Destination Guides by
             <span className="relative ml-2 inline-block h-[50px]">
               Your Favorite Creators
-              <span className="w-full h-full">
+              <span className="h-full w-full">
                 <Underline />
               </span>
             </span>
@@ -46,7 +46,7 @@ export default async function Page() {
       </div>
       <Suspense fallback="...">
         <MediaGrid>
-          {guides.map(
+          {guides?.map(
             (g: {
               id: string;
               cover: string;
@@ -55,12 +55,13 @@ export default async function Page() {
             }) => {
               const { cover, id, title, duration } = g;
               return (
-                <VerticalVideoPlayer
-                  duration={duration}
-                  title={title}
-                  url={cover}
-                  key={id}
-                />
+                <Link href={`./destination/${id}`} key={id}>
+                  <VerticalVideoPlayer
+                    duration={duration}
+                    title={title}
+                    url={cover}
+                  />
+                </Link>
               );
             },
           )}

@@ -14,7 +14,7 @@ export default function ImageGallery({ list }: { list: Array<any> }) {
   return (
     <div className="mt-[20px]">
       <div className="relative w-full">
-        <Carousel className="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <Carousel slideInterval={2000} leftControl=" " rightControl=" " className="relative h-56 overflow-hidden rounded-lg md:h-96">
           {list?.map((url) => {
             const uuid = extractUuidFromUrl(url);
             const imgUrl = `https://ucarecdn.com/${uuid}/-/resize/800/`;

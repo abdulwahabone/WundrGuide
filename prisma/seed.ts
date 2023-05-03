@@ -92,7 +92,6 @@ const locationData = [
     type: "Bar",
     media: [
       "https://ucarecdn.com/c31d98ae-77ec-4b14-a2d2-bb4d2738f389/aleksandrpopov2GNBoMgKYEounsplash.jpg",
-      "https://ucarecdn.com/af860882-38f0-4e59-b9f4-5b8b1808f81c/quinguyenS6atLH5Rf0Uunsplash.jpg",
       "https://ucarecdn.com/39ec7d9a-2b57-49b3-a3bc-69412db88106/patricktomassoGXXYkSwndP4unsplash.jpg",
       "https://ucarecdn.com/9c2c55b8-25c6-4a48-86ec-35b10f54adf3/pexelsfreevideos8541281920x108025fps.mp4",
     ],

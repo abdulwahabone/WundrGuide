@@ -86,7 +86,7 @@ const locationData = [
   {
     link: "https://www.hilton.com/en/hotels/nyccici-conrad-new-york-downtown/",
     title:
-      "Raise a Glass at the Best Bar in the City: A Sophisticated Oasis for Cocktail Connoisseurs",
+      "Unveiling the Best Hotel: A Luxurious Haven for Discerning Travelers",
     description:
       "Looking for the perfect spot to unwind and indulge in a delicious cocktail? Look no further than the best bar in the city! Located in the heart of downtown, this sophisticated oasis is a haven for cocktail connoisseurs and those who appreciate a finely crafted drink. Step inside and you'll be transported to a world of elegance and refinement, with luxurious furnishings and a cozy ambiance that invites you to sit back, relax, and savor every sip. The bar's expert mixologists use only the finest ingredients to create a wide variety of classic and inventive cocktails, each one perfectly balanced and bursting with flavor. Whether you prefer a refreshing gin and tonic or a bold and complex whiskey sour, you're sure to find your new favorite drink at the best bar in the city. So why wait? Grab a seat, raise a glass, and toast to the good life!",
     type: "Bar",

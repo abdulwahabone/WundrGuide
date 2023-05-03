@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
 import { Calendar } from "../shared/icons";
+import useOnScreen from "@/lib/hooks/useOnScreen";
 
 export default function VerticalVideoPlayer({
   url,
@@ -10,7 +11,7 @@ export default function VerticalVideoPlayer({
 }: {
   url: string;
   title: string;
-  duration: number
+  duration: number;
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -33,15 +34,21 @@ export default function VerticalVideoPlayer({
   const ratings = randomNumBetween38And5();
   const reviews = randomNumBetween100And500();
 
-  const durationLabel = duration < 2 ? "1 day" :`${duration} days`;
+  const durationLabel = duration < 2 ? "1 day" : `${duration} days`;
+
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useOnScreen(ref);
 
   return (
-    <div className="group relative mx-auto h-[500px] w-[300px] cursor-pointer overflow-hidden rounded-lg">
+    <div
+      ref={ref}
+      className="group relative mx-auto h-[500px] w-[300px] cursor-pointer overflow-hidden rounded-lg"
+    >
       <div className="absolute bottom-0 z-30 flex flex-col p-5">
         <div className="flex align-middle">
           <Calendar />
           <p
-            className="ml-2 animate-fade-up text-left text-sm text-white opacity-0 leading-[18px]"
+            className="ml-2 animate-fade-up text-left text-sm leading-[18px] text-white opacity-0"
             style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
           >
             {durationLabel}
@@ -83,7 +90,7 @@ export default function VerticalVideoPlayer({
             width="100%"
             height="auto"
             loop={true}
-            playing={true}
+            playing={isVisible}
             playsinline={true}
             volume={0.5}
             muted={true}

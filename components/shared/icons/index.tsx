@@ -7,3 +7,7 @@ export { default as Twitter } from "./twitter";
 export { default as Google } from "./google";
 export { default as Calendar } from "./calendar";
 export { default as Underline } from "./underline";
+export { default as Hotel } from "./hotel";
+export { default as Bar } from "./bar";
+export { default as Beach } from "./beach";
+export { default as Location } from "./location";

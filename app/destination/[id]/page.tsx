@@ -1,5 +1,17 @@
 import Balancer from "react-wrap-balancer";
 import prisma from "@/lib/prisma";
+import VerticalVideoPlayer from "@/components/verticalVideoPlayer";
+import LocationCardList from "@/components/locationCardList";
+
+function formatDate(date: any) {
+  var d = new Date(date);
+  return d.toLocaleDateString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
 
 const getGuideById = async (id: string | string[] | undefined) => {
   const queryId = id instanceof Array ? id[0] : id;
@@ -22,22 +34,36 @@ const getGuideById = async (id: string | string[] | undefined) => {
 export default async function Page({ params }: { params: any }) {
   const guide = await getGuideById(params?.id);
 
+  const duration = guide?.duration;
+  const label =
+    duration && duration > 2 ? `${duration} days trip` : "1 day trip";
+
+  const dateLabel = formatDate(guide?.dateCreated);
+
   return (
-    <div className="w-full max-w-xl">
+    <div className="w-full max-w-3xl relative">
+      <div
+        className="mx-auto animate-fade-up text-center text-sm font-thin text-black opacity-0"
+        style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+      >
+        {`${dateLabel}`}
+      </div>
       <h1
         className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-4xl md:leading-[4rem]"
         style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
       >
-        <Balancer>Create destination guide</Balancer>
+        <Balancer>{guide?.title}</Balancer>
       </h1>
-      <p
-        className="mt-1 animate-fade-up text-center text-gray-500 opacity-0 md:text-xl"
+      <div
+        className="mx-auto animate-fade-up text-center text-lg font-medium text-gray-500 opacity-0"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
-        <Balancer>Share Your Favorite Spots with Your Audience!</Balancer>
-        {/* <p><pre>{params}</pre></p> */}
-        <pre>{JSON.stringify(guide, null, 2)}</pre>
-      </p>
+        {label}
+      </div>
+      <div className="mx-auto mt-10">
+        <VerticalVideoPlayer url={guide?.cover || ""} hideDetails />
+      </div>
+      <LocationCardList list={guide?.locations} />
     </div>
   );
 }

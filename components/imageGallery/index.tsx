@@ -20,7 +20,7 @@ export default function ImageGallery({ list }: { list: Array<any> }) {
             const imgUrl = `https://ucarecdn.com/${uuid}/-/resize/800/`;
 
             return (
-              <div key={url} className="duration-700 ease-in-out">
+              <div key={url} className="duration-700 ease-in-out z-10">
                 <img
                   src={imgUrl}
                   className="absolute left-1/2 top-1/2 block h-auto max-w-full -translate-x-1/2 -translate-y-1/2"

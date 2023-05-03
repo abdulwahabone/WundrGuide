@@ -91,8 +91,9 @@ const locationData = [
       "Looking for the perfect spot to unwind and indulge in a delicious cocktail? Look no further than the best bar in the city! Located in the heart of downtown, this sophisticated oasis is a haven for cocktail connoisseurs and those who appreciate a finely crafted drink. Step inside and you'll be transported to a world of elegance and refinement, with luxurious furnishings and a cozy ambiance that invites you to sit back, relax, and savor every sip. The bar's expert mixologists use only the finest ingredients to create a wide variety of classic and inventive cocktails, each one perfectly balanced and bursting with flavor. Whether you prefer a refreshing gin and tonic or a bold and complex whiskey sour, you're sure to find your new favorite drink at the best bar in the city. So why wait? Grab a seat, raise a glass, and toast to the good life!",
     type: "Bar",
     media: [
+      "https://ucarecdn.com/c31d98ae-77ec-4b14-a2d2-bb4d2738f389/aleksandrpopov2GNBoMgKYEounsplash.jpg",
       "https://ucarecdn.com/af860882-38f0-4e59-b9f4-5b8b1808f81c/quinguyenS6atLH5Rf0Uunsplash.jpg",
-      "https://ucarecdn.com/2abbedab-15d6-45c4-97d5-ef5b6f5818f7/quinguyenZrp9b3PMIy8unsplash.jpg",
+      "https://ucarecdn.com/39ec7d9a-2b57-49b3-a3bc-69412db88106/patricktomassoGXXYkSwndP4unsplash.jpg",
       "https://ucarecdn.com/9c2c55b8-25c6-4a48-86ec-35b10f54adf3/pexelsfreevideos8541281920x108025fps.mp4",
     ],
   },

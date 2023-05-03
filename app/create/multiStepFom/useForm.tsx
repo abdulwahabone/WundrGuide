@@ -133,9 +133,13 @@ export default function useForm() {
       locations,
     };
 
-    await postGuide(payload);
-
-    router.push("/");
+    const respose = await postGuide(payload);
+    const responseId = respose?.id;
+    if (responseId) {
+      router.push(`./destination/${responseId}`);
+    } else {
+      window.alert("There was an error creating the guide");
+    }
   };
 
   const disableNextButton = () => {

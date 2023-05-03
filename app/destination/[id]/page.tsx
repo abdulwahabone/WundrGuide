@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: any }) {
 
   const duration = guide?.duration;
   const label =
-    duration && duration > 2 ? `${duration} days trip` : "1 day trip";
+    duration && duration > 1 ? `${duration} days trip` : "1 day trip";
 
   const dateLabel = formatDate(guide?.dateCreated);
 

@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
 import { Calendar } from "../shared/icons";
-import useOnScreen from "@/lib/hooks/useOnScreen";
+import { useInView } from "react-intersection-observer";
 
 export default function VerticalVideoPlayer({
   url,
@@ -38,13 +38,14 @@ export default function VerticalVideoPlayer({
 
   const durationLabel = duration && duration < 2 ? "1 day" : `${duration} days`;
 
-  const ref = useRef<HTMLDivElement>(null);
-  const isVisible = useOnScreen(ref);
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
   return (
     <div
       ref={ref}
-      className="group relative mx-auto h-[500px] w-[300px] cursor-pointer overflow-hidden rounded-lg"
+      className="group relative mx-auto h-[500px] w-[300px] cursor-pointer overflow-hidden rounded-lg bg-slate-400"
     >
       {!hideDetails && (
         <>
@@ -100,7 +101,7 @@ export default function VerticalVideoPlayer({
             width="100%"
             height="auto"
             loop={true}
-            playing={isVisible}
+            playing={inView}
             playsinline={true}
             volume={0.5}
             muted={true}

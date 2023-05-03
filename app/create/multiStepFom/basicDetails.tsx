@@ -93,7 +93,7 @@ export default function BasicDetails({
         </div>
 
         <p className="mb-0 block text-sm font-medium text-gray-900">
-          Cover Video
+          <strong>Vertical Cover Video</strong> (for higher engagement)
         </p>
       </div>
 

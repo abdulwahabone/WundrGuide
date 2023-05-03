@@ -9,6 +9,9 @@ import Balancer from "react-wrap-balancer";
 const getGuides = async () => {
   try {
     const guides = await prisma.guides.findMany({
+      orderBy: {
+        dateCreated: "desc",
+      },
       include: { locations: true },
     });
     return guides;
@@ -37,7 +40,7 @@ export default async function Page() {
             Unlock a World of Inspiration with Handcrafted Destination Guides by
             <span className="relative ml-2 inline-block h-[50px]">
               Your Favorite Creators
-              <span className="h-full w-full">
+              <span className="h-full w-full hidden md:block">
                 <Underline />
               </span>
             </span>

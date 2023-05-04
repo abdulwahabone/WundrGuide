@@ -21,7 +21,7 @@
 
 </br>
 
-## Tecnical Details
+## Technical Details
 
 ### Road Map
 

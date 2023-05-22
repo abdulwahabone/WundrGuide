@@ -1,7 +1,5 @@
 <img src="public/readme-logo.svg" alt="isolated" width="350" style="border-radius: 5px"/>
 
-[Preview Site](https://wundr-guide.vercel.app/)
-
 #### Unlock a World of Inspiration with Handcrafted Destination Guides by Your Favorite Creators
 </br>
 

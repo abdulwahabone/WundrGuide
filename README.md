@@ -1,6 +1,6 @@
 <img src="public/readme-logo.svg" alt="isolated" width="350" style="border-radius: 5px"/>
 
-#### Unlock a World of Inspiration with Handcrafted Destination Guides by Your Favorite Creators
+#### Unlock a World of Inspiration with Handcrafted Destination Guides by Your Favorite Creators and Influencers
 </br>
 
 ## Previews
